@@ -14,13 +14,15 @@
 1.   https://techcrunch.com/2024/09/09/bug-lets-anyone-bypass-whatsapps-view-once-privacy-feature/
   Dans cet article, le bug décrit est un problème au niveau des photos éphémères de Whatsapp. En effet, il existerait un moyen d'enregistrer les photos à vue unique sur son appareil. Selon moi, le bug est global car il vient d'un comportement utilisateur que les développeurs n'avaient pas prévus. La fail a été découverte en utilisant certaines extensions permettant d'utiliser l'application web de Whatsapp. Ce bug a des répercussions sur la confiance des clients sur la promesse de confidentialité. Il a également des répercussions sur la réputation de Whatsapp, beaucoup utilisé pour sa messagerie sécurisée et privée. Tester ce scénario avec toutes les manières possibles d'utiliser Whatsapp aurait pu aider à identifier cette vulnérabilité.
 
-2. Answer
+2. Le bug COLLECTIONS-580, identifié dans le projet Apache Commons Collections, constitue un bug local résultant d'une absence de vérifications appropriées (lack of checks) dans le processus de désérialisation de la classe InvokerTransformer. Ce défaut de vérification a engendré une vulnérabilité de sécurité critique. En effet, la désérialisation s’effectuait sans qu’aucune vérification ne soit effectuée pour s'assurer qu’elle était explicitement autorisée. Cela offrait la possibilité aux attaquants d’injecter des objets sérialisés malveillants et de prendre ainsi le contrôle du système. Cette capacité des attaquants à contourner les protections en place et à exécuter du code malveillant pouvait conduire à des actions dommageables telles que l'accès non autorisé à des données sensibles, la prise de contrôle à distance des systèmes, ou encore l'exécution de commandes nuisibles sur les machines cibles. Ce type de vulnérabilité rendait les systèmes utilisant cette fonctionnalité particulièrement exposés à des attaques sophistiquées, avec des conséquences potentiellement graves sur la sécurité et l'intégrité des données.
+Pour pallier cette faille, la méthode assertSerializable() a été implémentée afin de vérifier systématiquement, avant toute opération de sérialisation ou désérialisation, si celle-ci est autorisée en fonction des propriétés de sécurité définies. En complément, la méthode readObject a été modifiée pour inclure ces vérifications. Ainsi, toute tentative de désérialisation non autorisée entraîne le déclenchement d'une UnsupportedOperationException, empêchant ainsi l'exécution de code potentiellement malveillant.
+Des tests complémentaires ont également été intégrés pour garantir que la désérialisation est bien désactivée par défaut. Ces tests assurent également que toute tentative d'activation de la désérialisation sans passer par les vérifications appropriées est immédiatement bloquée par une exception, renforçant ainsi la sécurité du système contre de futures tentatives d'exploitation.
 
 3. L'experience menée par Netflix pour le "Chaos Engineering" est de provoquer des pannes volontaires comme l'arrêt de serveurs, les pertes de réseau ou la surcharge des bases de donnée pour évaluer la tolérance aux pannes du système.
 Une variable observée est le SPS pour starts per second
 new account signups per second
 
-5. hh
+4. 
 
+5. 
 6. 
-7. 
