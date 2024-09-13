@@ -20,7 +20,7 @@
 Une variable observée est le SPS pour starts per second
 new account signups per second
 
-5. 
+5. hh
 
 6. 
 7. 
